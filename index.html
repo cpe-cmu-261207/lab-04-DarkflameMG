@@ -7,13 +7,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src='script.js' defer></script>
 	<title>Lab 04</title>
-	<!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
+	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
-	<h1>Minimal Todo List</h1>
-	<input  type='text'>
-	<button>+</button>
+	<div class="max-w-max mx-auto">
+		<h1 class="max-w-max mx-auto">Minimal Todo List</h1>
+		<input id="myinput" oninput='listInput(event)' type='text' class="bg-gray-200 w-72">
+		<button id="myBtn" onclick="addlist()" class="bg-green-200">+</button>
+	</div>
 </body>
 
 </html>
