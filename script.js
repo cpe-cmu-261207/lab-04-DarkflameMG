@@ -7,7 +7,7 @@ const listInput = (ev) => {
 const mainDiv = document.createElement('div')
 mainDiv.setAttribute('class','max-w-sm mx-auto')
 const comDiv = document.createElement('div')
-comDiv.setAttribute('class','max-w-sm mx-auto')
+comDiv.setAttribute('class','max-w-sm mx-auto p-2')
 
 // Enter
 const input = document.getElementById("myinput")
@@ -20,30 +20,41 @@ input.addEventListener('keyup', (ev) => {
 
 // add list
 const addlist = () => {
-    const Taskspan = document.createElement('span')
-    const span = document.createElement('span')
+    const Taskspan = document.createElement('p')
+    Taskspan.setAttribute('class','group flex justify-between p-2')
+    const span = document.createElement('p')
+    const btndiv = document.createElement('div')
     if (currentInput != "") {
         span.innerHTML = currentInput
         Taskspan.append(span)
         
 
         const delBtn = document.createElement('button')
+        delBtn.setAttribute('class','text-white group-hover:bg-red-700 group-hover:text-black')
         delBtn.innerHTML = "Delete"
         delBtn.addEventListener('click', () => {
             mainDiv.removeChild(Taskspan)
         })
 
         const comBtn = document.createElement('button')
+        comBtn.setAttribute('class','text-white group-hover:bg-green-700 group-hover:text-black')
         comBtn.innerHTML = "Done"
         comBtn.addEventListener('click',() => {
-            comDiv.prepend(Taskspan)
+            const del = document.createElement('del')
+            //del.setAttribute('class','p-2')
+            del.innerHTML = span.innerHTML
+            del.append(document.createElement('br'))
+            comDiv.prepend(del)
             mainDiv.removeChild(Taskspan)
         })
 
-        Taskspan.append(delBtn)
-        Taskspan.append(document.createElement('br'))
+        btndiv.append(comBtn)
+        btndiv.append(delBtn)
+        Taskspan.append(btndiv)
+        //Taskspan.append(document.createElement('br'))
         mainDiv.prepend(Taskspan)
         document.body.append(mainDiv)
+        document.body.append(comDiv)
     }
     else
     {
