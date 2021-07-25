@@ -12,9 +12,9 @@ if (localStorage.length === 0) {
 }
 
 const mainDiv = document.createElement('div')
-mainDiv.setAttribute('class', 'max-w-sm mx-auto text-lgs')
+mainDiv.setAttribute('class', 'max-w-lg mx-auto text-xl')
 const comDiv = document.createElement('div')
-comDiv.setAttribute('class', 'max-w-sm mx-auto p-2 text-lg bg-green-200 rounded-xl')
+comDiv.setAttribute('class', 'max-w-lg mx-auto p-2 text-xl bg-green-200 rounded-xl shadow-md')
 
 // Enter
 const input = document.getElementById("myinput")
@@ -41,9 +41,10 @@ const addlist = (backup) => {
         }
         Taskspan.append(span)
         input.value=""
+        currentInput = ""
 
         const delBtn = document.createElement('button')
-        delBtn.setAttribute('class', 'text-white  pr-3 pl-3 group-hover:bg-red-400 group-hover:text-black rounded-lg')
+        delBtn.setAttribute('class', 'text-white  pr-3 pl-3 group-hover:bg-red-400 group-hover:text-black rounded-lg text-lg')
         delBtn.innerHTML = "Delete"
         delBtn.addEventListener('click', () => {
             listadd.dolist.splice(listadd.dolist.indexOf(span.innerHTML),1)
@@ -52,7 +53,7 @@ const addlist = (backup) => {
         })
 
         const comBtn = document.createElement('button')
-        comBtn.setAttribute('class', 'text-white  pr-4 pl-4 group-hover:bg-green-400 group-hover:text-black rounded-lg')
+        comBtn.setAttribute('class', 'text-white  pr-4 pl-4 group-hover:bg-green-400 group-hover:text-black rounded-lg text-lg')
         comBtn.innerHTML = "Done"
         comBtn.addEventListener('click', () => {
             const del = document.createElement('del')
@@ -102,6 +103,11 @@ const loadDolist = () => {
         currentInput = listadd.dolist[i]
         addlist(1)
     }
+}
+
+const clearall = () => {
+    localStorage.clear()
+    location.reload()
 }
 loadDolist()
 loadDoneList()
